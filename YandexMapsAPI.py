@@ -2,11 +2,14 @@ import requests
 
 
 class YandexStaticApi:
-    def get_image(self, latitude, longitude, scale):
-        coords = f'{latitude},{longitude}'
-        size = f'{scale}'
+    def __init__(self):
+        self.scale = 1
+        self.scale_step = 0.05
 
-        response = requests.get(f'https://static-maps.yandex.ru/1.x/?ll={coords}8&spn={size},0.00619&l=map')
+    def get_image(self, latitude, longitude):
+        coords = f'{latitude},{longitude}'
+
+        response = requests.get(f'https://static-maps.yandex.ru/1.x/?ll={coords}&spn={self.scale},0.00619&l=map')
 
         if response.status_code == 200:
             with open('image.png', 'wb') as f:
@@ -14,3 +17,15 @@ class YandexStaticApi:
 
             return 'ok'
         raise ValueError
+
+    def scale_up(self):
+        if self.scale == 1:
+            return
+
+        self.scale += self.scale_step
+
+    def scale_down(self):
+        if self.scale == 0.05:
+            return
+
+        self.scale -= self.scale_step
