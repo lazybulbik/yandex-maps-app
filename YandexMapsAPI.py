@@ -3,8 +3,8 @@ import requests
 
 class YandexStaticApi:
     def __init__(self, latitude, longitude):
-        self.scale = 0.7
-        self.scale_step = 0.05
+        self.scale = 0.01
+        self.scale_step = 0.0005
         self.latitude = latitude
         self.longitude = longitude
 
