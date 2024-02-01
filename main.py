@@ -21,6 +21,26 @@ class App(QMainWindow):
             YMap.get_image()
             self.PixMap = QPixmap('image.png')
             self.label.setPixmap(self.PixMap)
+        elif event.key() == Qt.Key_Up:
+            YMap.move_up()
+            YMap.get_image()
+            self.PixMap = QPixmap('image.png')
+            self.label.setPixmap(self.PixMap)
+        elif event.key() == Qt.Key_Down:
+            YMap.move_down()
+            YMap.get_image()
+            self.PixMap = QPixmap('image.png')
+            self.label.setPixmap(self.PixMap)
+        elif event.key() == Qt.Key_Left:
+            YMap.move_left()
+            YMap.get_image()
+            self.PixMap = QPixmap('image.png')
+            self.label.setPixmap(self.PixMap)
+        elif event.key() == Qt.Key_Right:
+            YMap.move_right()
+            YMap.get_image()
+            self.PixMap = QPixmap('image.png')
+            self.label.setPixmap(self.PixMap)
 
     def load_image(self, file_name):
         pixmap = QPixmap(file_name)
